@@ -37,9 +37,12 @@
   padding: 8px 12px;
   border-radius: 14px;
   font-size: 13px;
-  max-width: 85%;
+  max-width: 220px;
+  word-wrap: break-word;
+  word-break: break-word;
   line-height: 1.4;
 }
+
 
 .message.user {
   text-align: right;
