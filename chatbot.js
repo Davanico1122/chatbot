@@ -65,11 +65,12 @@ function getBotResponse(input) {
   if (m.includes("ai") || m.includes("kecerdasan buatan")) return "Saya adalah bagian dari teknologi AI.";
   if (m.includes("cuaca")) return "Maaf, saya belum bisa membaca cuaca 😅";
   if (m.includes("jam")) return `Sekarang jam ${new Date().toLocaleTimeString('id-ID')}`;
-  if (m.includes("tanggal") || m.includes("hari ini")) {
-    return `Hari ini ${new Date().toLocaleDateString('id-ID', {
-      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    })}`;
-  }
+ if (m.includes("tanggal") || m.includes("hari ini") || m.includes("hari apa")) {
+  return `Hari ini ${new Date().toLocaleDateString('id-ID', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  })}`;
+}
+
   if (m.includes("kenapa")) return "Hmm... bisa dijelaskan lebih lanjut pertanyaannya?";
   if (m.includes("apa itu")) return "Silakan beri tahu topik spesifik yang kamu maksud ya.";
   if (m.includes("bagaimana")) return "Saya akan bantu sebisanya. Coba dijelaskan lebih detail ya.";
@@ -101,10 +102,12 @@ function getBotResponse(input) {
   if (m.includes("ai")) return "Yes, I'm a basic AI chatbot!";
   if (m.includes("weather")) return "Sorry, I can't show real-time weather yet! 🌤️";
   if (m.includes("time")) return `Current time is ${new Date().toLocaleTimeString('en-US')}`;
-  if (m.includes("date") || m.includes("today")) {
-    return `Today is ${new Date().toLocaleDateString('en-US', {
-      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    })}`;
+  if (m.includes("date") || m.includes("today") || m.includes("what day is it")) {
+  return `Today is ${new Date().toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  })}`;
+}
+
   }
   if (m.includes("how") || m.includes("why")) return "Could you please clarify your question?";
   if (m.includes("bye") || m.includes("goodbye") || m.includes("see you")) return "Goodbye! Feel free to come back anytime. 👋";
