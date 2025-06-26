@@ -5,42 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chatbot AI</title>
   <link rel="stylesheet" href="chatbot-cool-responsive.css" />
-
-
-  <!-- Gunakan stylesheet keren -->
-  <link rel="stylesheet" href="chatbot-cool.css" />
 </head>
 <body>
 
-  <!-- Info header -->
   <div style="padding: 40px; text-align: center;">
     <h1>🤖 Chatbot AI by Davanico</h1>
     <p>Modern, responsive, and offline chatbot for your website.</p>
     <p>Click the chat button below to try it out!</p>
   </div>
 
-  <!-- Tombol toggle chatbot -->
-<button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+  <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
 
+  <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header">
+      <div class="bot-avatar">🤖</div>
+      <div class="bot-name">AI Assistant</div>
+    </div>
 
-<div class="chatbot-container" id="chatbot">
-  <div class="chatbot-header">
-    <div class="bot-avatar">🤖</div>
-    <div class="bot-name">AI Assistant</div>
-  </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
+      </div>
+    </div>
 
-  <div class="chat-messages" id="chatMessages">
-    <div class="message bot">
-      <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
+    <div class="chat-input">
+      <input type="text" id="messageInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">➤</button>
     </div>
   </div>
-
-  <div class="chat-input">
-    <input type="text" id="messageInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)">
-    <button onclick="sendMessage()">➤</button>
-  </div>
-</div>
-
 
   <script src="getBotResponse-smart-long.js"></script>
   <script src="chatbot.js"></script>
