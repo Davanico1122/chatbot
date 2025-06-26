@@ -2,12 +2,10 @@ const chatbot = document.getElementById('chatbot');
 const chatMessages = document.getElementById('chatMessages');
 const messageInput = document.getElementById('messageInput');
 
-// Tampilkan / sembunyikan chatbot
 function toggleChatbot() {
   chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
 }
 
-// Tambah pesan baru
 function addMessage(text, sender = 'bot') {
   const msgDiv = document.createElement('div');
   msgDiv.className = `message ${sender}`;
@@ -19,7 +17,6 @@ function addMessage(text, sender = 'bot') {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Fungsi kirim
 function sendMessage() {
   const msg = messageInput.value.trim();
   if (!msg) return;
@@ -30,17 +27,27 @@ function sendMessage() {
   setTimeout(() => {
     const response = getBotResponse(msg);
     addMessage(response, 'bot');
-  }, 600);
+  }, 500);
 }
 
-// Enter untuk kirim
 function handleKeyPress(e) {
   if (e.key === 'Enter') sendMessage();
 }
 
-// Respons bot
 function getBotResponse(input) {
   const m = input.toLowerCase();
+
+  if (m.includes("hello") || m.includes("hi")) return "Hello! Nice to meet you 😊";
+  if (m.includes("your name")) return "You can call me Bot!";
+  if (m.includes("creator")) return "I was created by Davanico, a web developer.";
+  if (m.includes("contact")) return "Reach us at admin@website.com.";
+  if (m.includes("thank")) return "You're welcome!";
+  if (m.includes("project")) return "You can check out my latest projects in the Project section.";
+  if (m.includes("bye")) return "Goodbye! See you again 👋";
+  if (m.includes("time")) return `It’s currently ${new Date().toLocaleTimeString('en-US')}`;
+  if (m.includes("date")) return `Today is ${new Date().toLocaleDateString('en-US')}`;
+  return "That's a good question! I'm still learning to answer that.";
+
 
   if (m.includes("halo") || m.includes("hai")) return "Halo juga! Senang bertemu denganmu.";
   if (m.includes("selamat pagi")) return "Selamat pagi! Semoga harimu menyenangkan 🌞";
