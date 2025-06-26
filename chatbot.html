@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot AI</title>
+  <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+
+  <!-- Tombol Buka Chatbot -->
+  <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+
+  <!-- Kotak Chatbot -->
+  <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header">
+      <div class="bot-avatar">🤖</div>
+      <div class="bot-name">AI Assistant</div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="messageInput" placeholder="Tulis pesan..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>
