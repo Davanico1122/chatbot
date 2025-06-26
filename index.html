@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chatbot AI</title>
-  <link rel="stylesheet" href="chatbot.css">
+
+  <!-- Gunakan stylesheet keren -->
+  <link rel="stylesheet" href="chatbot-cool.css" />
 </head>
 <body>
-  <div style="padding: 50px; text-align: center;">
-  <h1>💬 Web Chatbot AI by Davanico</h1>
-  <p>Simple, responsive, and offline chatbot for personal websites.</p>
-  <p>Click the chat button on the bottom-right to start talking!</p>
-</div>
 
+  <!-- Info header -->
+  <div style="padding: 40px; text-align: center;">
+    <h1>🤖 Chatbot AI by Davanico</h1>
+    <p>Modern, responsive, and offline chatbot for your website.</p>
+    <p>Click the chat button below to try it out!</p>
+  </div>
 
-  <!-- Tombol Buka Chatbot -->
+  <!-- Tombol toggle chatbot -->
   <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
 
-  <!-- Kotak Chatbot -->
+  <!-- Kotak chatbot -->
   <div class="chatbot-container" id="chatbot">
     <div class="chatbot-header">
       <div class="bot-avatar">🤖</div>
@@ -26,22 +29,16 @@
 
     <div class="chat-messages" id="chatMessages">
       <div class="message bot">
-        <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
+        <div class="message-bubble">Hello! I’m your AI Assistant. How can I help? 😊</div>
       </div>
     </div>
 
     <div class="chat-input">
-      <input type="text" id="messageInput" placeholder="Tulis pesan..." onkeypress="handleKeyPress(event)">
+      <input type="text" id="messageInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
       <button onclick="sendMessage()">➤</button>
     </div>
   </div>
 
-   <!-- footer -->
-  <footer style="text-align:center; padding:20px; font-size: 13px; color: #888;">
-  Built with 💡 by <a href="https://github.com/Davanico1122" target="_blank">Davanico</a>
-</footer>
-
- <!-- chatbot.js-->
   <script src="chatbot.js"></script>
 </body>
 </html>
