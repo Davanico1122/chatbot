@@ -89,6 +89,49 @@ function getBotResponse(input) {
 
   if (m.includes("help") || m.includes("bantuan")) return "Ketikkan pertanyaanmu dan saya akan bantu jawab semampu saya 🙋‍♂️";
 
+// === English Dialogs ===
+  if (m.includes("hello") || m.includes("hi")) return "Hello! Nice to meet you. 😊";
+  if (m.includes("good morning")) return "Good morning! Have a great day ahead!";
+  if (m.includes("good afternoon")) return "Good afternoon! How can I assist you today?";
+  if (m.includes("good evening")) return "Good evening! Hope you're doing well.";
+  if (m.includes("good night")) return "Good night! Rest well. 😴";
+
+  if (m.includes("your name") || m.includes("who are you")) return "I'm your AI Assistant created by Davanico to help you here.";
+  if (m.includes("how old") || m.includes("age")) return "I'm quite new! Just created recently. 😉";
+  if (m.includes("where are you from")) return "I live in the cloud, always ready to help from anywhere!";
+
+  if (m.includes("contact")) return "You can contact us at: admin@website.com 📧";
+  if (m.includes("email")) return "Official email: admin@website.com";
+  if (m.includes("whatsapp") || m.includes("phone")) return "Feel free to message us via WhatsApp at +62 xxx-xxxx.";
+
+  if (m.includes("thank you") || m.includes("thanks")) return "You're welcome! I'm happy to help. 🙌";
+  if (m.includes("great") || m.includes("awesome")) return "Thank you! You're awesome too! 😄";
+  if (m.includes("cool")) return "Glad you think it's cool! 🔥";
+
+  if (m.includes("project") || m.includes("portfolio")) return "You can check out my latest projects in the Project section!";
+  if (m.includes("what do you do")) return "I can answer your questions and help guide you through this website.";
+  if (m.includes("coding") || m.includes("programming")) return "I love HTML, CSS, and JavaScript! 👨‍💻";
+
+  if (m.includes("tools")) return "Common tools: VS Code, GitHub, Figma, Vercel.";
+  if (m.includes("hosting")) return "This website is hosted on Vercel.";
+  if (m.includes("framework")) return "This site may use vanilla JS or even frameworks like React if needed.";
+
+  if (m.includes("chatgpt")) return "I'm inspired by ChatGPT, but this version works offline using simple logic.";
+  if (m.includes("ai")) return "Yes, I'm a simple AI chatbot designed for interactive portfolios.";
+
+  if (m.includes("weather")) return "Sorry, I can't provide real-time weather info yet. 🌤️";
+  if (m.includes("time")) return `Current time is ${new Date().toLocaleTimeString('en-US')}`;
+  if (m.includes("date") || m.includes("today")) return `Today is ${new Date().toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  })}`;
+
+  if (m.includes("how") || m.includes("why")) return "Could you please clarify your question?";
+  if (m.includes("help")) return "Sure! Type anything and I’ll try to help as best as I can.";
+
+  if (m.includes("bye") || m.includes("goodbye") || m.includes("see you")) return "Goodbye! Feel free to come back anytime. 👋";
+  if (m.includes("who are you") || m.includes("what is your name")) return "I'm your friendly AI Assistant!";
+
+
   // Fallback jika tidak dikenali
-  return "Pertanyaan bagus! Tapi saya masih belajar memahami itu 🙏";
+  return "That's an interesting question! I'm still learning to answer it better. 🙏";
 }
