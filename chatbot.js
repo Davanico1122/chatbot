@@ -1,6 +1,7 @@
 const chatbot = document.getElementById('chatbot');
 const chatMessages = document.getElementById('chatMessages');
 const messageInput = document.getElementById('messageInput');
+const languageSelect = document.getElementById('languageSelect'); // Ambil dropdown
 
 function toggleChatbot() {
   chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
@@ -25,8 +26,20 @@ function sendMessage() {
   messageInput.value = '';
 
   setTimeout(() => {
-    const lang = detectLanguage(msg);
-    const response = lang === 'id' ? getBotResponseID(msg) : getBotResponseEN(msg);
+    const selectedLang = languageSelect.value;
+    let response = '';
+
+    try {
+      if (selectedLang === 'id') {
+        response = getBotResponseID(msg);
+      } else {
+        response = getBotResponseEN(msg);
+      }
+    } catch (error) {
+      response = "Oops! Bot tidak bisa merespons saat ini.";
+      console.error("Error:", error);
+    }
+
     addMessage(response, 'bot');
   }, 400);
 }
@@ -35,16 +48,3 @@ function handleKeyPress(e) {
   if (e.key === 'Enter') sendMessage();
 }
 
-// Bahasa Deteksi Sederhana
-function detectLanguage(text) {
-  const idKeywords = ["halo", "selamat", "kamu", "apa", "siapa", "kontak", "terima", "portofolio", "project", "ngoding", "hari", "umur"];
-  const enKeywords = ["hello", "good", "you", "what", "who", "contact", "thank", "portfolio", "project", "coding", "day", "old"];
-
-  let idScore = 0, enScore = 0;
-  const t = text.toLowerCase();
-
-  idKeywords.forEach(k => { if (t.includes(k)) idScore++; });
-  enKeywords.forEach(k => { if (t.includes(k)) enScore++; });
-
-  return idScore >= enScore ? 'id' : 'en';
-}
