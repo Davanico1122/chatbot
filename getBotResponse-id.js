@@ -1,4 +1,3 @@
-
 // File: getBotResponse-id.js
 function getBotResponseID(input) {
   const m = input.toLowerCase();
@@ -16,16 +15,6 @@ function getBotResponseID(input) {
     const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
     return `Hari ini hari ${hari[now.getDay()]}.`;
   }
-
-  // === TANGGAL ===
-  if (m.includes("tanggal")) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return `Tanggal hari ini adalah ${now.toLocaleDateString('id-ID', options)}.`;
-  }
-
-  return "Maaf, saya belum bisa menjawab itu. Silakan coba pertanyaan lain 😊";
-}
-  
   // === SAPAAN ===
   if (m.includes("halo") || m.includes("hai")) return "Halo! Selamat datang di portofolio Davanico! Silakan tanya apa saja 😊";
   if (m.includes("selamat pagi")) return "Selamat pagi! Semoga siap menjelajah desain keren 🌞";
