@@ -8,17 +8,17 @@ const now = new Date();
   if (m.includes("time")) {
     const h = now.getHours().toString().padStart(2, '0');
     const min = now.getMinutes().toString().padStart(2, '0');
-    return The current time is ${h}:${min}.;
+    return `The current time is ${h}:${min}.`;
   }
 
   if (m.includes("day")) {
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    return Today is ${days[now.getDay()]}.;
+    return `Today is ${days[now.getDay()]}.`;
   }
 
   if (m.includes("date")) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return Today's date is ${now.toLocaleDateString('en-US', options)}.;
+    return `Today's date is ${now.toLocaleDateString('en-US', options)}.`;
   }
 
 
