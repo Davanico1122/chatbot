@@ -2,6 +2,25 @@
 
 function getBotResponseEN(input) {
 const m = input.toLowerCase();
+const now = new Date();
+
+  // === Waktu, Hari, Tanggal ===
+  if (m.includes("time")) {
+    const h = now.getHours().toString().padStart(2, '0');
+    const min = now.getMinutes().toString().padStart(2, '0');
+    return The current time is ${h}:${min}.;
+  }
+
+  if (m.includes("day")) {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return Today is ${days[now.getDay()]}.;
+  }
+
+  if (m.includes("date")) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return Today's date is ${now.toLocaleDateString('en-US', options)}.;
+  }
+
 
 // === GREETINGS ===
 if (m.includes("hello") || m.includes("hi")) return "Hello! Welcome to Davanico's portfolio! Feel free to ask anything about the projects 😊";
