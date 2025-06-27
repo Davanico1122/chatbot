@@ -12,6 +12,22 @@ function getBotResponseID(input) {
   if (m.includes("apa kabar") || m.includes("bagaimana kabarmu")) return "Saya baik-baik saja! Siap menunjukkan karya-karya keren. Kamu bagaimana?";
   if (m.includes("lagi apa")) return "Saya siap menemani kamu menjelajah portofolio Davanico!";
 
+
+  // === WAKTU & TANGGAL ===
+  if (m.includes("jam berapa") || m.includes("pukul berapa")) {
+    const now = new Date();
+    const jam = now.getHours().toString().padStart(2, '0');
+    const menit = now.getMinutes().toString().padStart(2, '0');
+    return `Sekarang pukul ${jam}:${menit}`;
+  }
+
+  if (m.includes("hari apa") || m.includes("sekarang hari apa")) {
+    const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    const today = new Date().getDay();
+    return `Hari ini adalah ${hari[today]}`;
+  }
+
+
   // === PERKENALAN ===
   if (m.includes("siapa namamu")) return "Kamu bisa panggil saya Asisten Bot 😊";
   if (m.includes("siapa kamu") || m.includes("kamu apa")) return "Saya chatbot yang dibuat untuk membantumu menjelajahi portofolio desain Davanico!";
