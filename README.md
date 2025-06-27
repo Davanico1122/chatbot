@@ -143,6 +143,6 @@ This chatbot is **free to use** for personal and educational purposes. No attrib
 Created by **Davanico Ady Nugroho**  
 📧 Email: davanico1122@gmail.com  
 📱 WhatsApp: +62 8978143546  
-📸 Instagram: [@davanico](https://instagram.com/davanico)
+📸 Instagram: [@davanico1122_](https://instagram.com/davanico1122_)
 
 ---
