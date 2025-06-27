@@ -87,14 +87,43 @@
   cursor: pointer;
 }
 
-/* Header */
+/* Header dengan tombol jendela */
 .chatbot-header {
+  position: relative;
   background: linear-gradient(to right, #667eea, #764ba2);
   padding: 12px;
   text-align: center;
   color: white;
   font-weight: bold;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tombol ala jendela kode (merah, kuning, hijau) */
+.chatbot-window-buttons-top {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+}
+.chatbot-window-buttons-top span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.red-dot {
+  background-color: #ff5f56;
+}
+.yellow-dot {
+  background-color: #ffbd2e;
+}
+.green-dot {
+  background-color: #27c93f;
 }
 
 /* Area Pesan */
@@ -118,13 +147,12 @@
   word-break: break-word;
   font-size: 14px;
   line-height: 1.4;
-  white-space: pre-line; /* Agar teks support line break dari JS */
-  transition: all 0.2s ease-in-out; /* Efek halus saat muncul */
+  white-space: pre-line;
+  transition: all 0.2s ease-in-out;
   opacity: 0;
   animation: fadeInBubble 0.3s ease forwards;
 }
 
-/* Animasi munculnya pesan */
 @keyframes fadeInBubble {
   to {
     opacity: 1;
@@ -139,7 +167,6 @@
   background: #667eea;
   color: white;
 }
-
 .message.bot {
   align-self: flex-start;
 }
@@ -148,7 +175,7 @@
   color: white;
 }
 
-/* Input */
+/* Input Area */
 .chat-input {
   display: flex;
   padding: 10px;
@@ -189,82 +216,4 @@
     height: auto;
     max-height: 55vh;
   }
-}
-
-
-
-.chatbot-header {
-  position: relative;
-  background: linear-gradient(to right, #667eea, #764ba2);
-  padding: 12px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.chatbot-title {
-  flex: 1;
-  text-align: center;
-}
-
-.chatbot-window-buttons {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 6px;
-}
-
-.chatbot-window-buttons .btn {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.chatbot-window-buttons .red {
-  background: #ff5f56;
-}
-.chatbot-window-buttons .yellow {
-  background: #ffbd2e;
-}
-.chatbot-window-buttons .green {
-  background: #27c93f;
-}
-
-/* Tombol jendela gaya macOS (Merah, Kuning, Hijau) */
-.chatbot-window-buttons-top {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  display: flex;
-  gap: 8px;
-  z-index: 100;
-}
-
-.chatbot-window-buttons-top span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.red-dot {
-  background-color: #ff5f56;
-}
-.yellow-dot {
-  background-color: #ffbd2e;
-}
-.green-dot {
-  background-color: #27c93f;
-}
-
-/* Pastikan kontainer bisa menjadi acuan posisi relatif */
-.chatbot-container {
-  position: relative;
 }
