@@ -14,22 +14,34 @@
     <p>Click the chat button below to try it out!</p>
   </div>
 
- <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+<!-- ===== Chatbot Toggle Button ===== -->
+<button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
 
-<div class="chatbot-container" id="chatbot">
+<!-- ===== Chatbot Container ===== -->
+<div class="chatbot-container" id="chatbot" style="display: none;">
   <div class="chatbot-header">AI Assistant</div>
+  
   <div class="chat-messages" id="chatMessages">
     <div class="message bot">
       <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
     </div>
   </div>
+  
   <div class="chat-input">
-    <input type="text" id="messageInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)">
+    <input 
+      type="text" 
+      id="messageInput" 
+      placeholder="Ketik pesan..." 
+      onkeypress="handleKeyPress(event)" 
+      autocomplete="off"
+    >
     <button onclick="sendMessage()">➤</button>
   </div>
 </div>
+    
+<script src="getBotResponse-id.js"></script>
+<script src="getBotResponse-en.js"></script>
+ <script src="chatbot.js"></script>  
 
-  <script src="getBotResponse-smart-long.js"></script>
-  <script src="chatbot.js"></script>
 </body>
 </html>
