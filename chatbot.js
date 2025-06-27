@@ -1,71 +1,73 @@
-const chatbot = document.getElementById('chatbot');
-const chatMessages = document.getElementById('chatMessages');
-const messageInput = document.getElementById('messageInput');
-const languageSelect = document.getElementById('languageSelect') || { value: 'id' }; // fallback default
+// File: chatbot.js
 
-function toggleChatbot() {
-  chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const chatbot = document.getElementById('chatbot');
+  const chatMessages = document.getElementById('chatMessages');
+  const messageInput = document.getElementById('messageInput');
+  const languageSelect = document.getElementById('languageSelect') || { value: 'id' };
 
-function addMessage(text, sender = 'bot') {
-  const msgDiv = document.createElement('div');
-  msgDiv.className = `message ${sender}`;
-  const bubble = document.createElement('div');
-  bubble.className = 'message-bubble';
-  bubble.textContent = '';
-  msgDiv.appendChild(bubble);
-  chatMessages.appendChild(msgDiv);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-
-  // Tampilkan typing efek huruf per huruf (bot only)
-  if (sender === 'bot') {
-    let i = 0;
-    const typing = setInterval(() => {
-      if (i < text.length) {
-        bubble.textContent += text.charAt(i);
-        i++;
-      } else {
-        clearInterval(typing);
-      }
-    }, 25); // Kecepatan ketik
-  } else {
-    bubble.textContent = text;
+  window.toggleChatbot = function () {
+    chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
   }
-}
 
-function sendMessage() {
-  const msg = messageInput.value.trim();
-  if (!msg) return;
+  function addMessage(text, sender = 'bot') {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${sender}`;
+    const bubble = document.createElement('div');
+    bubble.className = 'message-bubble';
+    bubble.textContent = '';
+    msgDiv.appendChild(bubble);
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  addMessage(msg, 'user');
-  messageInput.value = '';
-
-  setTimeout(() => {
-    const lang = languageSelect.value || 'id';
-    let response = '';
-
-    try {
-      response = lang === 'id' ? getBotResponseID(msg) : getBotResponseEN(msg);
-    } catch (err) {
-      response = "Oops, bot gagal menjawab. Periksa file responnya!";
-      console.error("Error getting bot response:", err);
+    if (sender === 'bot') {
+      let i = 0;
+      const typing = setInterval(() => {
+        if (i < text.length) {
+          bubble.textContent += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(typing);
+        }
+      }, 25);
+    } else {
+      bubble.textContent = text;
     }
+  }
 
-    addMessage(response, 'bot');
-  }, 500);
-}
+  window.sendMessage = function () {
+    const msg = messageInput.value.trim();
+    if (!msg) return;
 
-function handleKeyPress(e) {
-  if (e.key === 'Enter') sendMessage();
-}
+    addMessage(msg, 'user');
+    messageInput.value = '';
 
-function changeLanguage() {
-  const lang = languageSelect.value;
-  const greeting = lang === 'id'
-    ? "Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊"
-    : "Hello! I'm your AI Assistant. How can I help you? 😊";
+    setTimeout(() => {
+      const lang = languageSelect.value || 'id';
+      let response = '';
 
-  // Hapus semua pesan & tampilkan ulang pesan awal
-  chatMessages.innerHTML = '';
-  addMessage(greeting, 'bot');
-}
+      try {
+        response = lang === 'id' ? getBotResponseID(msg) : getBotResponseEN(msg);
+      } catch (err) {
+        response = "Oops, bot gagal menjawab. Periksa file responnya!";
+        console.error("Error getting bot response:", err);
+      }
+
+      addMessage(response, 'bot');
+    }, 500);
+  }
+
+  window.handleKeyPress = function (e) {
+    if (e.key === 'Enter') sendMessage();
+  }
+
+  window.changeLanguage = function () {
+    const lang = languageSelect.value;
+    const greeting = lang === 'id'
+      ? "Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊"
+      : "Hello! I'm your AI Assistant. How can I help you? 😊";
+
+    chatMessages.innerHTML = '';
+    addMessage(greeting, 'bot');
+  }
+});
