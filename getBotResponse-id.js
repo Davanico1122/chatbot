@@ -8,19 +8,19 @@ function getBotResponseID(input) {
   if (m.includes("jam")) {
     const h = now.getHours().toString().padStart(2, '0');
     const min = now.getMinutes().toString().padStart(2, '0');
-    return Sekarang jam ${h}:${min}.;
+    return `Sekarang jam ${h}:${min}.`;
   }
 
   // === HARI ===
   if (m.includes("hari")) {
     const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-    return Hari ini hari ${hari[now.getDay()]}.;
+    return `Hari ini hari ${hari[now.getDay()]}.`;
   }
 
   // === TANGGAL ===
   if (m.includes("tanggal")) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return Tanggal hari ini adalah ${now.toLocaleDateString('id-ID', options)}.;
+    return `Tanggal hari ini adalah ${now.toLocaleDateString('id-ID', options)}.`;
   }
   
   // === SAPAAN ===
