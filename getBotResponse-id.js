@@ -2,7 +2,27 @@
 // Filee: getBotResponse-id.js
 function getBotResponseID(input) {
   const m = input.toLowerCase();
+  const now = new Date();
 
+  // === JAM ===
+  if (m.includes("jam")) {
+    const h = now.getHours().toString().padStart(2, '0');
+    const min = now.getMinutes().toString().padStart(2, '0');
+    return Sekarang jam ${h}:${min}.;
+  }
+
+  // === HARI ===
+  if (m.includes("hari")) {
+    const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+    return Hari ini hari ${hari[now.getDay()]}.;
+  }
+
+  // === TANGGAL ===
+  if (m.includes("tanggal")) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return Tanggal hari ini adalah ${now.toLocaleDateString('id-ID', options)}.;
+  }
+  
   // === SAPAAN ===
   if (m.includes("halo") || m.includes("hai")) return "Halo! Selamat datang di portofolio Davanico! Silakan tanya apa saja 😊";
   if (m.includes("selamat pagi")) return "Selamat pagi! Semoga siap menjelajah desain keren 🌞";
@@ -11,21 +31,6 @@ function getBotResponseID(input) {
   if (m.includes("selamat malam")) return "Selamat malam! Saya tetap di sini kalau mau lanjut jelajah 😴";
   if (m.includes("apa kabar") || m.includes("bagaimana kabarmu")) return "Saya baik-baik saja! Siap menunjukkan karya-karya keren. Kamu bagaimana?";
   if (m.includes("lagi apa")) return "Saya siap menemani kamu menjelajah portofolio Davanico!";
-
-
-  // === WAKTU & TANGGAL ===
-  if (m.includes("jam berapa") || m.includes("pukul berapa")) {
-    const now = new Date();
-    const jam = now.getHours().toString().padStart(2, '0');
-    const menit = now.getMinutes().toString().padStart(2, '0');
-    return `Sekarang pukul ${jam}:${menit}`;
-  }
-
-  if (m.includes("hari apa") || m.includes("sekarang hari apa")) {
-    const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-    const today = new Date().getDay();
-    return `Hari ini adalah ${hari[today]}`;
-  }
 
 
   // === PERKENALAN ===
