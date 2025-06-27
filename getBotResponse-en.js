@@ -12,20 +12,6 @@ if (m.includes("good night")) return "Good night! I'm always here if you want to
 if (m.includes("how are you") || m.includes("how do you do")) return "I'm great! Always ready to showcase awesome design works. How about you?";
 if (m.includes("what are you doing")) return "I'm getting ready to guide you through Davanico’s portfolio. Ask me anything!";
 
-// === Time Response ===
-  if (m.includes("what time")  m.includes("time is it")  m.includes("current time")) {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    return The current time is ${hours}:${minutes};
-  }
-
-// === Day Response ===
-  if (m.includes("what day") || m.includes("today")) {
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const today = new Date().getDay();
-    return Today is ${days[today]}.;
-  }
   
 // === INTRODUCTION ===
 if (m.includes("your name")) return "You can call me Assistant Bot 😊";
