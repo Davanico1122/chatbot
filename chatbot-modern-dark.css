@@ -5,7 +5,7 @@
   right: 20px;
   width: 50px;
   height: 50px;
-  background: #b8b4b4;
+  background: linear-gradient(135deg, #aaaaaa, #cccccc);
   color: black;
   font-size: 22px;
   border: none;
@@ -38,15 +38,66 @@
 
 /* Animasi */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeOutDown {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(30px); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .chatbot-container.hide {
   animation: fadeOutDown 0.3s ease forwards;
+}
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+/* Header */
+.chatbot-header {
+  position: relative;
+  background: #b8b4b4;
+  color: #111;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tombol jendela gaya macOS */
+.chatbot-window-buttons-top {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.chatbot-window-buttons-top span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.red-dot {
+  background-color: #ff5f56;
+}
+.yellow-dot {
+  background-color: #ffbd2e;
+}
+.green-dot {
+  background-color: #27c93f;
 }
 
 /* Dropdown Bahasa */
@@ -57,9 +108,12 @@
   gap: 6px;
   padding: 8px 12px;
   font-size: 13px;
-  background: #2b2b2b;
+  background: #1e1e1e;
   color: white;
   border-bottom: 1px solid #444;
+}
+.chatbot-lang label {
+  font-weight: 500;
 }
 .chatbot-lang select {
   padding: 4px 8px;
@@ -72,39 +126,6 @@
   cursor: pointer;
 }
 
-/* Header */
-.chatbot-header {
-  position: relative;
-  background: #b8b4b4;
-  padding: 12px;
-  text-align: center;
-  color: black;
-  font-weight: bold;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Tombol ala jendela kode */
-.chatbot-window-buttons-top {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  display: flex;
-  gap: 8px;
-  z-index: 1;
-}
-.chatbot-window-buttons-top span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-.red-dot { background-color: #ff5f56; }
-.yellow-dot { background-color: #ffbd2e; }
-green-dot { background-color: #27c93f; }
-
 /* Area Pesan */
 .chat-messages {
   height: 240px;
@@ -114,7 +135,8 @@ green-dot { background-color: #27c93f; }
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: #0d0d0d;
+  background: #111;
+  color: white;
 }
 
 /* Gelembung Pesan */
@@ -133,7 +155,9 @@ green-dot { background-color: #27c93f; }
 }
 
 @keyframes fadeInBubble {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .message.user {
@@ -141,6 +165,57 @@ green-dot { background-color: #27c93f; }
   text-align: right;
 }
 .message.user .message-bubble {
-  background: #d1d1d1;
+  background: #d0d0d0;
   color: black;
+}
+
+.message.bot {
+  align-self: flex-start;
+}
+.message.bot .message-bubble {
+  background: #2c2c2c;
+  color: white;
+}
+
+/* Input */
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: #2a2a2a;
+  border-top: 1px solid #444;
+}
+.chat-input input {
+  flex: 1;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #111;
+  color: white;
+}
+.chat-input button {
+  margin-left: 10px;
+  font-size: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #b8b4b4;
+  color: black;
+  cursor: pointer;
+}
+
+/* Responsif */
+@media (max-width: 480px) {
+  .chatbot-container {
+    width: 90vw;
+    height: 65vh;
+    right: 5%;
+    bottom: 75px;
+  }
+  .chat-messages {
+    height: auto;
+    max-height: 55vh;
+  }
 }
