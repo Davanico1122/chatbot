@@ -1,5 +1,5 @@
 
-// Filee: getBotResponse-id.js
+// File: getBotResponse-id.js
 function getBotResponseID(input) {
   const m = input.toLowerCase();
   const now = new Date();
@@ -22,6 +22,9 @@ function getBotResponseID(input) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return `Tanggal hari ini adalah ${now.toLocaleDateString('id-ID', options)}.`;
   }
+
+  return "Maaf, saya belum bisa menjawab itu. Silakan coba pertanyaan lain 😊";
+}
   
   // === SAPAAN ===
   if (m.includes("halo") || m.includes("hai")) return "Halo! Selamat datang di portofolio Davanico! Silakan tanya apa saja 😊";
