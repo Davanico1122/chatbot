@@ -190,3 +190,49 @@
     max-height: 55vh;
   }
 }
+
+
+
+.chatbot-header {
+  position: relative;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  padding: 12px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-title {
+  flex: 1;
+  text-align: center;
+}
+
+.chatbot-window-buttons {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.chatbot-window-buttons .btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.chatbot-window-buttons .red {
+  background: #ff5f56;
+}
+.chatbot-window-buttons .yellow {
+  background: #ffbd2e;
+}
+.chatbot-window-buttons .green {
+  background: #27c93f;
+}
