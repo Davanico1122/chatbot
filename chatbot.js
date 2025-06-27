@@ -1,44 +1,71 @@
-// chatbot.js lengkap dengan efek typing dan dukungan dua bahasa
+const chatbot = document.getElementById('chatbot');
+const chatMessages = document.getElementById('chatMessages');
+const messageInput = document.getElementById('messageInput');
+const languageSelect = document.getElementById('languageSelect') || { value: 'id' }; // fallback default
 
-const chatbot = document.getElementById('chatbot'); const chatMessages = document.getElementById('chatMessages'); const messageInput = document.getElementById('messageInput');
+function toggleChatbot() {
+  chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none';
+}
 
-function toggleChatbot() { chatbot.style.display = chatbot.style.display === 'none' || chatbot.style.display === '' ? 'flex' : 'none'; }
+function addMessage(text, sender = 'bot') {
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `message ${sender}`;
+  const bubble = document.createElement('div');
+  bubble.className = 'message-bubble';
+  bubble.textContent = '';
+  msgDiv.appendChild(bubble);
+  chatMessages.appendChild(msgDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 
-function addTypingMessage(text, sender = 'bot') { const msgDiv = document.createElement('div'); msgDiv.className = message ${sender}; const bubble = document.createElement('div'); bubble.className = 'message-bubble'; msgDiv.appendChild(bubble); chatMessages.appendChild(msgDiv); chatMessages.scrollTop = chatMessages.scrollHeight;
+  // Tampilkan typing efek huruf per huruf (bot only)
+  if (sender === 'bot') {
+    let i = 0;
+    const typing = setInterval(() => {
+      if (i < text.length) {
+        bubble.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typing);
+      }
+    }, 25); // Kecepatan ketik
+  } else {
+    bubble.textContent = text;
+  }
+}
 
-let i = 0; const typingInterval = setInterval(() => { if (i < text.length) { bubble.textContent += text.charAt(i); chatMessages.scrollTop = chatMessages.scrollHeight; i++; } else { clearInterval(typingInterval); } }, 30); }
+function sendMessage() {
+  const msg = messageInput.value.trim();
+  if (!msg) return;
 
-function addMessage(text, sender = 'bot') { const msgDiv = document.createElement('div'); msgDiv.className = message ${sender}; const bubble = document.createElement('div'); bubble.className = 'message-bubble'; bubble.textContent = text; msgDiv.appendChild(bubble); chatMessages.appendChild(msgDiv); chatMessages.scrollTop = chatMessages.scrollHeight; }
+  addMessage(msg, 'user');
+  messageInput.value = '';
 
-function sendMessage() { const msg = messageInput.value.trim(); if (!msg) return;
+  setTimeout(() => {
+    const lang = languageSelect.value || 'id';
+    let response = '';
 
-addMessage(msg, 'user'); messageInput.value = '';
+    try {
+      response = lang === 'id' ? getBotResponseID(msg) : getBotResponseEN(msg);
+    } catch (err) {
+      response = "Oops, bot gagal menjawab. Periksa file responnya!";
+      console.error("Error getting bot response:", err);
+    }
 
-// Tampilkan indikator "Typing..." const typingIndicator = document.createElement('div'); typingIndicator.className = 'message bot typing-indicator'; const bubble = document.createElement('div'); bubble.className = 'message-bubble'; bubble.textContent = 'Typing...'; typingIndicator.appendChild(bubble); chatMessages.appendChild(typingIndicator); chatMessages.scrollTop = chatMessages.scrollHeight;
+    addMessage(response, 'bot');
+  }, 500);
+}
 
-setTimeout(() => { // Deteksi bahasa dari dropdown jika ada const langSelect = document.getElementById('languageSelect'); const lang = langSelect ? langSelect.value : detectLanguage(msg);
+function handleKeyPress(e) {
+  if (e.key === 'Enter') sendMessage();
+}
 
-const response = lang === 'id' ? getBotResponseID(msg) : getBotResponseEN(msg);
+function changeLanguage() {
+  const lang = languageSelect.value;
+  const greeting = lang === 'id'
+    ? "Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊"
+    : "Hello! I'm your AI Assistant. How can I help you? 😊";
 
-// Hapus indikator "Typing..."
-typingIndicator.remove();
-
-// Efek mengetik
-addTypingMessage(response, 'bot');
-
-}, 1000); }
-
-function handleKeyPress(e) { if (e.key === 'Enter') sendMessage(); }
-
-function detectLanguage(text) { const idKeywords = ["halo", "selamat", "kamu", "apa", "siapa", "kontak", "terima", "portofolio", "project", "ngoding", "hari", "umur"]; const enKeywords = ["hello", "good", "you", "what", "who", "contact", "thank", "portfolio", "project", "coding", "day", "old"];
-
-let idScore = 0, enScore = 0; const t = text.toLowerCase();
-
-idKeywords.forEach(k => { if (t.includes(k)) idScore++; }); enKeywords.forEach(k => { if (t.includes(k)) enScore++; });
-
-return idScore >= enScore ? 'id' : 'en'; }
-
-function changeLanguage() { // Jika ingin mengganti greeting pertama berdasarkan bahasa, bisa ditambahkan di sini const lang = document.getElementById('languageSelect')?.value; const greeting = lang === 'id' ? 'Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊' : 'Hello! I am AI Assistant. How can I help you today? 😊';
-
-chatMessages.innerHTML = ''; addTypingMessage(greeting); }
-
+  // Hapus semua pesan & tampilkan ulang pesan awal
+  chatMessages.innerHTML = '';
+  addMessage(greeting, 'bot');
+}
