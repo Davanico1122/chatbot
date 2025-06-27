@@ -236,3 +236,35 @@
 .chatbot-window-buttons .green {
   background: #27c93f;
 }
+
+/* Tombol jendela gaya macOS (Merah, Kuning, Hijau) */
+.chatbot-window-buttons-top {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.chatbot-window-buttons-top span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red-dot {
+  background-color: #ff5f56;
+}
+.yellow-dot {
+  background-color: #ffbd2e;
+}
+.green-dot {
+  background-color: #27c93f;
+}
+
+/* Pastikan kontainer bisa menjadi acuan posisi relatif */
+.chatbot-container {
+  position: relative;
+}
