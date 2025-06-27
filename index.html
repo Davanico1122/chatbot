@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,34 +14,49 @@
     <p>Click the chat button below to try it out!</p>
   </div>
 
-<!-- ===== Chatbot Toggle Button ===== -->
-<button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+  <!-- ===== Chatbot Toggle Button ===== -->
+  <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
 
-<!-- ===== Chatbot Container ===== -->
-<div class="chatbot-container" id="chatbot" style="display: none;">
-  <div class="chatbot-header">AI Assistant</div>
-  
-  <div class="chat-messages" id="chatMessages">
-    <div class="message bot">
-      <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
+  <!-- ===== Chatbot Container ===== -->
+  <div class="chatbot-container" id="chatbot" style="display: none;">
+
+    <!-- === Language Selector === -->
+    <div class="chatbot-lang">
+      <label for="languageSelect">🌐</label>
+      <select id="languageSelect" onchange="changeLanguage()">
+        <option value="id">🇮🇩 ID</option>
+        <option value="en">🇺🇸 EN</option>
+      </select>
+    </div>
+
+    <!-- === Chatbot Header === -->
+    <div class="chatbot-header">AI Assistant</div>
+
+    <!-- === Chat Messages === -->
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">
+        <div class="message-bubble">Halo! Saya AI Assistant. Ada yang bisa saya bantu? 😊</div>
+      </div>
+    </div>
+
+    <!-- === Input Area === -->
+    <div class="chat-input">
+      <input 
+        type="text" 
+        id="messageInput" 
+        placeholder="Ketik pesan..." 
+        onkeypress="handleKeyPress(event)" 
+        autocomplete="off"
+      >
+      <button onclick="sendMessage()">➤</button>
     </div>
   </div>
-  
-  <div class="chat-input">
-    <input 
-      type="text" 
-      id="messageInput" 
-      placeholder="Ketik pesan..." 
-      onkeypress="handleKeyPress(event)" 
-      autocomplete="off"
-    >
-    <button onclick="sendMessage()">➤</button>
-  </div>
-</div>
-    
-<script src="getBotResponse-id.js"></script>
-<script src="getBotResponse-en.js"></script>
- <script src="chatbot.js"></script>  
+
+  <!-- === Script Order === -->
+  <script src="getBotResponse-id.js"></script>
+  <script src="getBotResponse-en.js"></script>
+  <script src="chatbot.js"></script>
 
 </body>
 </html>
+
