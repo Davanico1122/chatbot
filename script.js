@@ -1,4 +1,3 @@
-// === Toggle Playlist Panel ===
 document.addEventListener("DOMContentLoaded", function () {
   const toggleBtn = document.getElementById('togglePlaylist');
   const closeBtn = document.getElementById('closePlaylist');
